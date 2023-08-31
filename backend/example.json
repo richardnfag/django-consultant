@@ -1,0 +1,82 @@
+[
+  {
+    "model": "loans.loanfield",
+    "pk": 1,
+    "fields": {
+      "name": "rg",
+      "label": "RG",
+      "data_type": "text",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 2,
+    "fields": {
+      "name": "email",
+      "label": "E-mail",
+      "data_type": "email",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 3,
+    "fields": {
+      "name": "telefone",
+      "label": "Telefone",
+      "data_type": "tel",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 4,
+    "fields": {
+      "name": "nome_da_mae",
+      "label": "Nome da Mãe",
+      "data_type": "text",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 5,
+    "fields": {
+      "name": "data_de_nascimento",
+      "label": "Data de Nascimento",
+      "data_type": "date",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 6,
+    "fields": {
+      "name": "salario",
+      "label": "Salário Mensal",
+      "data_type": "number",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 7,
+    "fields": {
+      "name": "valor_da_proposta",
+      "label": "Valor da Proposta",
+      "data_type": "number",
+      "visible": true
+    }
+  },
+  {
+    "model": "loans.loanfield",
+    "pk": 8,
+    "fields": {
+      "name": "prazo_meses",
+      "label": "Prazo da Proposta (em meses)",
+      "data_type": "number",
+      "visible": true
+    }
+  }
+]
