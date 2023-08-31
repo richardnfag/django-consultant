@@ -1,0 +1,90 @@
+version: "3.8"
+services:
+  backend:
+    container_name: backend
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+          condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=backend.settings
+      - DJANGO_SECRET_KEY=django-insecure-9dsd45+t*r6c6k48^s=k5pp_+#nfh&c3lajo1=x&mp&(p#2dgn
+      - DJANGO_ALLOWED_HOSTS=*
+      - DJANGO_CORS_ALLOWED_ORIGINS=http://localhost:3000
+      - DJANGO_DEBUG=True
+      - DJANGO_DATABASE_NAME=postgres
+      - DJANGO_DATABASE_USER=postgres
+      - DJANGO_DATABASE_PASSWORD=postgres
+      - DJANGO_DATABASE_HOST=db
+      - DJANGO_DATABASE_PORT=5432
+      - CELERY_BROKER_URL=amqp://rabbit:rabbit@rabbitmq:5672//
+      - CELERY_RESULT_BACKEND=django-db
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    command: npm start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=production
+  celery:
+    container_name: celery
+    build: ./backend
+    command: celery -A backend worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+          condition: service_healthy
+      rabbitmq:
+          condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=backend.settings
+      - DJANGO_SECRET_KEY=django-insecure-9dsd45+t*r6c6k48^s=k5pp_+#nfh&c3lajo1=x&mp&(p#2dgn
+      - DJANGO_ALLOWED_HOSTS=*
+      - DJANGO_CORS_ALLOWED_ORIGINS=http://localhost:3000
+      - DJANGO_DEBUG=True                                                                                                                                                                 
+      - DJANGO_DATABASE_NAME=postgres
+      - DJANGO_DATABASE_USER=postgres
+      - DJANGO_DATABASE_PASSWORD=postgres
+      - DJANGO_DATABASE_HOST=db
+      - DJANGO_DATABASE_PORT=5432
+      - CELERY_BROKER_URL=amqp://rabbit:rabbit@rabbitmq:5672//
+      - CELERY_RESULT_BACKEND=django-db
+  db:
+    container_name: db
+    image: postgres:12.1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready" ,"-q", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbit
+      RABBITMQ_DEFAULT_PASS: rabbit
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics" ,"-q", "ping"]
+      timeout: 20s
+      retries: 3
+volumes:
+  postgres_data:
