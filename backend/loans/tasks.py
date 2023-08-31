@@ -14,12 +14,13 @@ def submit_proposal_task(proposal_id):
         response = requests.post('https://loan-processor.digitalsys.com.br/api/v1/loan/', json=proposal_data)
 
         if response.status_code == 200:
-            result = response.json()
-            proposal.approved = result.get('approved', 'denied')
-            proposal.save()
-            return "Proposal updated with approval status"
-        else:
-            return "Error verifying proposal approval"
+            result = response.json().get('approved')
+            if result:
+                proposal.approved = result
+                proposal.save()
+                return "Proposal updated with approval status"
+
+        return "Error verifying proposal approval"
 
     except Exception as e:
-        return str(e)
+        return f"Error: {e}"
