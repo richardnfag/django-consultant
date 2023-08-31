@@ -7,9 +7,10 @@ import {
   Label,
   Spinner,
   Body1,
+  Badge,
 } from "@fluentui/react-components";
 
-import {Send24Regular} from "@fluentui/react-icons";
+import {Send24Regular, Add24Regular} from "@fluentui/react-icons";
 
 import { useEffect, useState, FormEvent } from 'react'
 
@@ -40,7 +41,6 @@ const useStyles = makeStyles({
       flexDirection: "column",
       ...shorthands.gap("2px"),
     },
-
   },
   body: {
     textAlign: "center",
@@ -60,6 +60,7 @@ export default function LoanProposalForm() {
   const styles = useStyles();
   const [data, setData] = useState<Array<Field>>([]);
   const [isLoading, setLoading] = useState(true);
+  const [isDone, setDone] = useState(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -85,7 +86,8 @@ export default function LoanProposalForm() {
  
     const res = await response.json()
     console.log("Submitted Response:");
-    console.log(res);
+    setDone(true);
+    console.log(res.message);
   }
 
   useEffect(() => {
@@ -114,7 +116,20 @@ export default function LoanProposalForm() {
     </div>
   );
 
+  if (isDone) return (
+    <main>
+    <Badge appearance="ghost" color="success" size="extra-large">
+        Proposta Enviada com Sucesso!
+    </Badge>
+    <br />
+    <Button appearance="primary" icon={<Add24Regular />} onClick={()=> {setDone(false)}}>
+        Enviar Nova Proposta
+    </Button>
+    </main>
+  )
+
   return (
+    <main>
       <form className={styles.root} onSubmit={onSubmit}>
       {data.map((field) => {
         return (
@@ -126,6 +141,7 @@ export default function LoanProposalForm() {
       })}
       <Button type="submit" appearance="primary" icon={<Send24Regular/>}>Enviar Proposta</Button>
       </form>
+    </main>
   );
 
 };

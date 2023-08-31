@@ -10,9 +10,11 @@ interface Props {
 
 export default function LoanProposalPanel({ children, ...props }: Props) {
     return (
+        <header>
         <FluentProvider theme={webLightTheme}>
             <LoanProposalMenu />
             {children}
         </FluentProvider>
+        </header>
     )
 }
