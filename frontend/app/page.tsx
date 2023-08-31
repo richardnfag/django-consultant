@@ -1,8 +1,9 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+import LoanProposalForm from "./components/LoanProposalForm";
+
 
 export default function Home() {
   return (
-    <></>
+      <LoanProposalForm />
   )
 }
