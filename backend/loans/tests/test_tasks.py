@@ -12,7 +12,7 @@ class TestTaskLoanProposal:
         expected_response = "Proposal updated with approval status"
 
         assert response == expected_response
-    
+
     @patch("loans.tasks.requests.post")
     def test_submit_proposal_task_denied(self, mock_post, loan_proposal):
         mock_post.return_value.status_code = 200
@@ -32,7 +32,6 @@ class TestTaskLoanProposal:
 
         assert response == expected_response
 
-
     @patch("loans.tasks.requests.post")
     def test_submit_proposal_task_with_bad_response(self, mock_post, loan_proposal):
         mock_post.return_value.status_code = 200
@@ -49,4 +48,3 @@ class TestTaskLoanProposal:
         expected_response = "Error: LoanProposal matching query does not exist."
 
         assert response == expected_response
-

@@ -14,8 +14,9 @@ def loan_field():
         name="valor_da_proposta",
         label="Valor da Proposta",
         data_type="number",
-        visible=True
+        visible=True,
     )
+
 
 @pytest.fixture
 def loan_proposal():
@@ -26,10 +27,9 @@ def loan_proposal():
         auto_approved="pending",
     )
 
+
 @pytest.fixture
 def custom_field_value(loan_proposal, loan_field):
     return CustomFieldValue.objects.create(
-        loan_proposal=loan_proposal,
-        loan_field=loan_field,
-        value="100000"
+        loan_proposal=loan_proposal, loan_field=loan_field, value="100000"
     )
