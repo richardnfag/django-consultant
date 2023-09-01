@@ -19,8 +19,6 @@ h1 {
   font-size: 24px;
   margin: 0;
   padding: 12px 0;
-  /* vertical-align: middle; */
-  /* display: table-cell; */
 }
 
 h2 {
@@ -32,5 +30,5 @@ h2 {
 }
 
 main {
-  margin: 18px
+  margin: 18px;
 }

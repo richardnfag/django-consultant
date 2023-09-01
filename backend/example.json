@@ -78,5 +78,155 @@
       "data_type": "number",
       "visible": true
     }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 1,
+    "fields": {
+      "name": "Jodi Avila",
+      "document": "563.338.125-44",
+      "approved": "approved",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 2,
+    "fields": {
+      "name": "Anne Frank",
+      "document": "598.229.215-00",
+      "approved": "approved",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 3,
+    "fields": {
+      "name": "Jan Bernier",
+      "document": "812.345.187-32",
+      "approved": "pending",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 4,
+    "fields": {
+      "name": "Clifford Hansen",
+      "document": "539.817.147-09",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 5,
+    "fields": {
+      "name": "Susan Scott",
+      "document": "185.542.882-20",
+      "approved": "pending",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 6,
+    "fields": {
+      "name": "Christopher Odom",
+      "document": "638.628.817-33",
+      "approved": "denied",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 7,
+    "fields": {
+      "name": "Bessie Spears",
+      "document": "039.519.667-18",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 8,
+    "fields": {
+      "name": "Joyce Hernandez",
+      "document": "317.111.720-73",
+      "approved": "denied",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 9,
+    "fields": {
+      "name": "Marion Simmons",
+      "document": "609.702.819-94",
+      "approved": "approved",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 10,
+    "fields": {
+      "name": "James Salerno",
+      "document": "348.820.049-33",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 11,
+    "fields": {
+      "name": "Kathy Porada",
+      "document": "957.883.924-38",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 12,
+    "fields": {
+      "name": "Jill Mackenzie",
+      "document": "452.739.520-34",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 13,
+    "fields": {
+      "name": "Steven Meyer",
+      "document": "547.612.630-91",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 14,
+    "fields": {
+      "name": "Jennifer Littlefield",
+      "document": "996.395.711-05",
+      "approved": "pending",
+      "auto_approved": "approved"
+    }
+  },
+  {
+    "model": "loans.loanproposal",
+    "pk": 15,
+    "fields": {
+      "name": "Diana Meadows",
+      "document": "089.007.128-45",
+      "approved": "pending",
+      "auto_approved": "denied"
+    }
   }
 ]

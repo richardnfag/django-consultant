@@ -101,7 +101,10 @@ export default function LoanProposalForm() {
       setData(data)
       setLoading(false)
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err)
+      setLoading(false)
+    });
   }, [])
 
   if (isLoading) return (
@@ -111,9 +114,11 @@ export default function LoanProposalForm() {
   );
 
   if (data.length === 0) return (
+    <main>
     <div className={styles.body}>
-        <Body1>O Formulário para solicitação de empréstimo pessoal ainda não esta disponível. <br/> Tente entrar novamente mais tarde.</Body1>
+        <Body1>O Formulário para solicitação de empréstimo pessoal ainda não esta disponível. Tente entrar novamente mais tarde.</Body1>
     </div>
+    </main>
   );
 
   if (isDone) return (

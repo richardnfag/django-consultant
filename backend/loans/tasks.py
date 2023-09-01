@@ -16,15 +16,17 @@ def submit_proposal_task(proposal_id):
         if response.status_code == 200:
             result = response.json().get('approved')
    
-            if result:
+            if result == True:
                 proposal.auto_approved = 'approved'
-            else:
+            elif result == False:
                 proposal.auto_approved = 'denied'
-
+            else:
+                return "Error: bad api response"
+            
             proposal.save()
             return "Proposal updated with approval status"
 
-        return "Error verifying proposal approval"
+        return "Error: verifying proposal approval"
 
     except Exception as e:
         return f"Error: {e}"

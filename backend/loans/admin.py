@@ -64,18 +64,22 @@ class LoanProposalAdmin(admin.ModelAdmin):
             case _, _:
                 return 'N/A'
 
-    approval_buttons.short_description = 'Aprovação da Proposta'
+    approval_buttons.short_description = 'Aprovar/Desaprovar Proposta'
     approval_buttons.allow_tags = True
 
     actions = [approve_proposal, deny_proposal]
 
-    @admin.display(description="Status da Aprovação da Proposta")
+    @admin.display(description="Status")
     def status_display(self, obj):
+        if obj.auto_approved == 'denied':
+            return "Negado pelo provedor"
+
         status = {
             'approved': 'Aprovado',
             'denied': 'Negado',
             'pending': 'Pendente',
         }
+        
         return status.get(obj.approved, 'N/A')
 
 
@@ -84,8 +88,10 @@ class LoanProposalAdmin(admin.ModelAdmin):
         return obj.document
 
     readonly_fields = ['name', 'cpf_display', 'status_display', 'approval_buttons']
-    list_display = ['name', 'cpf_display', 'auto_approved', 'approved']
-    list_filter = ['approved']
+    list_display = ['name', 'cpf_display', 'status_display']
+    list_filter = ['approved',]
+
+    search_fields = ['name', 'document']
     
     fieldsets = (
         (None, {
