@@ -1,9 +1,6 @@
-"use client"
+"use client";
 import LoanProposalForm from "./components/LoanProposalForm";
 
-
 export default function Home() {
-  return (
-      <LoanProposalForm />
-  )
+  return <LoanProposalForm />;
 }

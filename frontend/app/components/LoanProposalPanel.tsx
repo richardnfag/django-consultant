@@ -1,20 +1,19 @@
-
-'use client'
+"use client";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import LoanProposalMenu from "./LoanProposalMenu";
 import React, { ReactNode } from "react";
 
 interface Props {
-    children?: ReactNode
+  children?: ReactNode;
 }
 
 export default function LoanProposalPanel({ children, ...props }: Props) {
-    return (
-        <header>
-        <FluentProvider theme={webLightTheme}>
-            <LoanProposalMenu />
-            {children}
-        </FluentProvider>
-        </header>
-    )
+  return (
+    <header>
+      <FluentProvider theme={webLightTheme}>
+        <LoanProposalMenu />
+        {children}
+      </FluentProvider>
+    </header>
+  );
 }
